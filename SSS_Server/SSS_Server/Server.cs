@@ -18,6 +18,8 @@ namespace SSS_Server
         public delegate void PacketHandler(int _fromClient, Packet _packet);
         public static Dictionary<int, PacketHandler> packetHandlers;
 
+        private static Socket listener;
+
         public static void Start(int _maxPlayer, int _port)
         {
             MaxPlayers = _maxPlayer;
@@ -27,7 +29,7 @@ namespace SSS_Server
             InitializeServerData();
 
             // Create a TCP/IP socket.  
-            Socket listener = new Socket(AddressFamily.InterNetwork,
+            listener = new Socket(AddressFamily.InterNetwork,
                 SocketType.Stream, ProtocolType.Tcp);
 
             // Bind the socket to the local endpoint and listen for incoming connections.  
@@ -38,10 +40,10 @@ namespace SSS_Server
 
                 // Start an asynchronous socket to listen for connections.  
                 Console.WriteLine($"Server started on {Port}.");
-                Console.WriteLine("Waiting for a connection...");
                 listener.BeginAccept(
                     new AsyncCallback(TCPConnectCallback),
-                    listener);
+                    null);
+                Console.WriteLine("Waiting for a connection...");
             }
             catch (Exception e)
             {
@@ -51,9 +53,10 @@ namespace SSS_Server
 
         private static void TCPConnectCallback(IAsyncResult _result)
         {
-            // Get the socket that handles the client request.  
-            Socket listener = (Socket)_result.AsyncState;
             Socket _client = listener.EndAccept(_result);
+            listener.BeginAccept(
+                    new AsyncCallback(TCPConnectCallback),
+                    null);
 
             Console.WriteLine($"Incoming connection from {_client.RemoteEndPoint}");
 
