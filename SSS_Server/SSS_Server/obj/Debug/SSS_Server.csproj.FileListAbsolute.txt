@@ -1,0 +1,6 @@
+D:\Git repo\SSS_Server\SSS_Server\bin\Debug\SSS_Server.exe.config
+D:\Git repo\SSS_Server\SSS_Server\bin\Debug\SSS_Server.exe
+D:\Git repo\SSS_Server\SSS_Server\bin\Debug\SSS_Server.pdb
+D:\Git repo\SSS_Server\SSS_Server\obj\Debug\SSS_Server.csprojAssemblyReference.cache
+D:\Git repo\SSS_Server\SSS_Server\obj\Debug\SSS_Server.exe
+D:\Git repo\SSS_Server\SSS_Server\obj\Debug\SSS_Server.pdb
