@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace SSS_Client
 {
@@ -16,13 +17,17 @@ namespace SSS_Client
         //packet types (server)
         public enum ServerPackets
         {
-            welcome = 1
+            welcome = 1,
+            spawnPlayer,
+            playerPosition,
+            playerRotation
         }
 
         //packet types (client)
         public enum ClientPackets
         {
-            welcome = 1
+            welcome = 1,
+            playerMovement
         }
 
         //constructors
@@ -64,7 +69,6 @@ namespace SSS_Client
         {
             return Length() - readPos; // return the remaining length (unread)
         }
-
         public void SetBytes(byte[] _data) //convert to array to read
         {
             Write(_data);
@@ -78,6 +82,10 @@ namespace SSS_Client
         public int Length() //return buffer length
         {
             return buffer.Count;
+        }
+        public void InsertInt(int _value)
+        {
+            buffer.InsertRange(0, BitConverter.GetBytes(_value)); // Insert the int at the start of the buffer
         }
 
         //write
@@ -117,6 +125,19 @@ namespace SSS_Client
         public void WriteLength()
         {
             buffer.InsertRange(0, BitConverter.GetBytes(buffer.Count));
+        }
+        public void Write(Vector3 _value)
+        {
+            Write(_value.x);
+            Write(_value.y);
+            Write(_value.z);
+        }
+        public void Write(Quaternion _value)
+        {
+            Write(_value.x);
+            Write(_value.y);
+            Write(_value.z);
+            Write(_value.w);
         }
 
         //read
@@ -251,6 +272,14 @@ namespace SSS_Client
                 throw new Exception("Could not read value of type 'string'!");
             }
         }
+        public Vector3 ReadVector3(bool _moveReadPos = true)
+        {
+            return new Vector3(ReadFloat(_moveReadPos), ReadFloat(_moveReadPos), ReadFloat(_moveReadPos));
+        }
+        public Quaternion ReadQuaternion(bool _moveReadPos = true)
+        {
+            return new Quaternion(ReadFloat(_moveReadPos), ReadFloat(_moveReadPos), ReadFloat(_moveReadPos), ReadFloat(_moveReadPos));
+        }
 
         //garbage collection
         protected virtual void Dispose(bool _disposing)
@@ -274,5 +303,4 @@ namespace SSS_Client
             GC.SuppressFinalize(this);
         }
     }
-
 }

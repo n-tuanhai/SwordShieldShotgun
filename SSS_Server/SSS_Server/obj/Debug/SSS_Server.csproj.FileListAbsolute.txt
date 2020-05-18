@@ -10,3 +10,6 @@ D:\Git repo\SwordShieldShotgun\SSS_Server\SSS_Server\bin\Debug\SSS_Server.pdb
 D:\Git repo\SwordShieldShotgun\SSS_Server\SSS_Server\obj\Debug\SSS_Server.csprojAssemblyReference.cache
 D:\Git repo\SwordShieldShotgun\SSS_Server\SSS_Server\obj\Debug\SSS_Server.exe
 D:\Git repo\SwordShieldShotgun\SSS_Server\SSS_Server\obj\Debug\SSS_Server.pdb
+D:\Git repo\SwordShieldShotgun\SSS_Server\SSS_Server\bin\Debug\System.Numerics.Vectors.dll
+D:\Git repo\SwordShieldShotgun\SSS_Server\SSS_Server\bin\Debug\System.Numerics.Vectors.xml
+D:\Git repo\SwordShieldShotgun\SSS_Server\SSS_Server\obj\Debug\SSS_Server.csproj.CopyComplete

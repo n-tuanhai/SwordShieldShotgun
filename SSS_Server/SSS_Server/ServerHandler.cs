@@ -18,6 +18,7 @@ namespace SSS_Server
             {
                 Console.WriteLine($"Player \"{_username}\" (ID: {_fromClient}) has assumed the wrong client ID ({_clientIdCheck})!");
             }
+            Server.clientList[_fromClient].SendIntoGame(_username);
         }
     }
 }

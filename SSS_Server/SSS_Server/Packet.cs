@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,13 +17,17 @@ namespace SSS_Server
         //packet types (server)
         public enum ServerPackets
         {
-            welcome = 1
+            welcome = 1,
+            spawnPlayer,
+            playerPosition,
+            playerRotation
         }
 
         //packet types (client)
         public enum ClientPackets
         {
-            welcome = 1
+            welcome = 1,
+            playerMovement
         }
 
         //constructors
@@ -116,6 +121,19 @@ namespace SSS_Server
         public void WriteLength()
         {
             buffer.InsertRange(0, BitConverter.GetBytes(buffer.Count));
+        }
+        public void Write(Vector3 _value)
+        {
+            Write(_value.X);
+            Write(_value.Y);
+            Write(_value.Z);
+        }
+        public void Write(Quaternion _value)
+        {
+            Write(_value.X);
+            Write(_value.Y);
+            Write(_value.Z);
+            Write(_value.W);
         }
 
         //read
@@ -249,6 +267,14 @@ namespace SSS_Server
             {
                 throw new Exception("Could not read value of type 'string'!");
             }
+        }
+        public Vector3 ReadVector3(bool _moveReadPos = true)
+        {
+            return new Vector3(ReadFloat(_moveReadPos), ReadFloat(_moveReadPos), ReadFloat(_moveReadPos));
+        }
+        public Quaternion ReadQuaternion(bool _moveReadPos = true)
+        {
+            return new Quaternion(ReadFloat(_moveReadPos), ReadFloat(_moveReadPos), ReadFloat(_moveReadPos), ReadFloat(_moveReadPos));
         }
 
         //garbage collection
