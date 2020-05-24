@@ -64,5 +64,78 @@ namespace SSS_Server
                 SendTCPData(_toClient, _packet);
             }
         }
+
+        public static void playerPosition(int _toClient, Player _player)
+        {
+            using (Packet _packet = new Packet((int)ServerPackets.playerPosition))
+            {
+                _packet.Write(_player.id);
+                _packet.Write(_player.position);
+
+                SendUDPData(_toClient, _packet);
+            }
+        }
+
+        public static void playerRotation(int _toClient, Player _player)
+        {
+            using (Packet _packet = new Packet((int)ServerPackets.playerRotation))
+            {
+                _packet.Write(_player.id);
+                _packet.Write(_player.rotation);
+
+                SendUDPData(_toClient, _packet);
+            }
+        }
+
+        public static void playerHealth(int _toClient, Player _player)
+        {
+            using (Packet _packet = new Packet((int)ServerPackets.playerHealth))
+            {
+                _packet.Write(_player.id);
+                _packet.Write(_player.health);
+
+                SendUDPData(_toClient, _packet);
+            }
+        }
+
+        public static void playerRespawned(int _toClient, Player _player)
+        {
+            using (Packet _packet = new Packet((int)ServerPackets.playerRespawned))
+            {
+                _packet.Write(_player.id);
+
+                SendUDPData(_toClient, _packet);
+            }
+        }
+
+        public static void playerAttack(int _toClient, Player _player)
+        {
+            using (Packet _packet = new Packet((int)ServerPackets.playerAttack))
+            {
+                _packet.Write(_player.id);
+
+                SendUDPData(_toClient, _packet);
+            }
+        }
+
+        public static void playerDefense(int _toClient, Player _player)
+        {
+            using (Packet _packet = new Packet((int)ServerPackets.playerDefense))
+            {
+                _packet.Write(_player.id);
+
+                SendUDPData(_toClient, _packet);
+            }
+        }
+
+        public static void playerDisconnected(int _toClient, Player _player)
+        {
+            using (Packet _packet = new Packet((int)ServerPackets.playerDisconnected))
+            {
+                _packet.Write(_player.id);
+
+                SendUDPData(_toClient, _packet);
+            }
+        }
     }
 }

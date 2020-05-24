@@ -15,6 +15,10 @@ namespace SSS_Server
         public Vector3 position;
         public Quaternion rotation;
 
+        public int health;
+
+
+
         public Player(int _id, string _username, Vector3 _spawnPosition)
         {
             id = _id;

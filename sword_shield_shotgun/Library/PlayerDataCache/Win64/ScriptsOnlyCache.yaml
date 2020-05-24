@@ -53,29 +53,29 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9864}
     - Class: 114
-      Script: {instanceID: 10232}
+      Script: {instanceID: 9914}
     - Class: 114
-      Script: {instanceID: 10574}
+      Script: {instanceID: 10040}
     - Class: 114
-      Script: {instanceID: 10754}
+      Script: {instanceID: 10236}
     - Class: 114
-      Script: {instanceID: 10852}
+      Script: {instanceID: 10578}
     - Class: 114
-      Script: {instanceID: 10896}
+      Script: {instanceID: 10758}
     - Class: 114
-      Script: {instanceID: 11018}
+      Script: {instanceID: 10856}
     - Class: 114
-      Script: {instanceID: 11276}
+      Script: {instanceID: 10882}
     - Class: 114
-      Script: {instanceID: 11360}
+      Script: {instanceID: 10902}
     - Class: 114
-      Script: {instanceID: 12360}
+      Script: {instanceID: 11024}
     - Class: 114
-      Script: {instanceID: 12366}
+      Script: {instanceID: 11026}
     - Class: 114
-      Script: {instanceID: 12372}
+      Script: {instanceID: 11284}
     - Class: 114
-      Script: {instanceID: 12386}
+      Script: {instanceID: 11368}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -185,6 +185,12 @@ ScriptsOnlyBuild:
     className: TMP_InputField
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerController
+  - hash:
+      serializedVersion: 2
       Hash: 7ab0e790220bdca831fdd886b339039d
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -225,6 +231,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: AspectRatioFitter
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CameraController
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -401,6 +413,12 @@ ScriptsOnlyBuild:
     className: TimelineAsset
   - hash:
       serializedVersion: 2
+      Hash: 86a4c4a60253e8c173479e8f7fa608c6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GameManager
+  - hash:
+      serializedVersion: 2
       Hash: 89391e7eb3fdbf910a22235cb88b6602
     assemblyName: Assembly-CSharp.dll
     namespaceName: SSS_Client
@@ -423,6 +441,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: GraphicRaycaster
+  - hash:
+      serializedVersion: 2
+      Hash: 19ce4d990b36c942bc272650aa89dc85
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerManager
   - hash:
       serializedVersion: 2
       Hash: 88cc9df3c6fc697bfbeacd24c0d6f2d7
@@ -537,31 +561,7 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: PlayerController
-  - hash:
-      serializedVersion: 2
-      Hash: 86a4c4a60253e8c173479e8f7fa608c6
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: GameManager
-  - hash:
-      serializedVersion: 2
-      Hash: 19ce4d990b36c942bc272650aa89dc85
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: PlayerManager
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: CameraController
   platform: 19
   scenePathNames:
   - Assets/Scenes/Menu Test.unity
-  playerPath: C:/Users/n-tuanhai/Desktop/New folder (4)/sword_shield_shotgun.exe
+  playerPath: "C:/Users/ducph/OneDrive/M\xE1y t\xEDnh/sword_shield_shotgun.exe"

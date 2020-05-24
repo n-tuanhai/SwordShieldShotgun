@@ -41,4 +41,39 @@ public class GameManager : MonoBehaviour
         _player.GetComponent<PlayerManager>().username = _username;
         players.Add(_id, _player.GetComponent<PlayerManager>());
     }
+
+    public void playerPosition(int _id, Vector3 _position)
+    {
+        // TODO
+    }
+
+    public void playerRotation(int _id, Quaternion _rotation)
+    {
+        // TODO
+    }
+
+    public void playerHealth(int _id, int _health)
+    {
+        // TODO
+    }
+
+    public void playerAttack(int _id)
+    {
+        // TODO
+    }
+
+    public void playerDefense(int _id)
+    {
+        // TODO
+    }
+
+    public void playerRespawned(int _id)
+    {
+        // TODO
+    }
+
+    public void playerDisconnected(int _id)
+    {
+        // TODO
+    }    
 }
