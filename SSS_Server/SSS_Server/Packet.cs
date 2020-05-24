@@ -20,7 +20,15 @@ namespace SSS_Server
             welcome = 1,
             spawnPlayer,
             playerPosition,
-            playerRotation
+            playerRotation,
+            playerHealth,
+            playerRespawned,
+            spawnProjectile,
+            projectilePosition,
+            projectileExploded,
+            playerAttack,
+            playerDefense,
+            playerDisconnected
         }
 
         //packet types (client)
