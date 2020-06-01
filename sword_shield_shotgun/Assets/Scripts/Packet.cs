@@ -20,14 +20,18 @@ namespace SSS_Client
             welcome = 1,
             spawnPlayer,
             playerPosition,
-            playerRotation
+            playerRotation,
+            playerDisconnected,
+            playerHealth,
+            playerRespawned
         }
 
         //packet types (client)
         public enum ClientPackets
         {
             welcome = 1,
-            playerMovement
+            playerMovement,
+            playerShoot
         }
 
         //constructors

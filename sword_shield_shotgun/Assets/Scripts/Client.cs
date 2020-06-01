@@ -20,6 +20,7 @@ namespace SSS_Client
         public TCP tcp;
         public UDP udp;
 
+        private bool isConnected = false;
         private delegate void PacketHandler(Packet _packet);
         private static Dictionary<int, PacketHandler> packetHandlers;
 
@@ -35,6 +36,11 @@ namespace SSS_Client
             }
         }
 
+        private void OnApplicationQuit()
+        {
+            Disconnect();
+        }
+
         private void Start()
         {
             tcp = new TCP();
@@ -44,6 +50,7 @@ namespace SSS_Client
         public void ConnectToServer()
         {
             InitializeClientData();
+            isConnected = true;
             tcp.Connect();
         }
 
@@ -94,15 +101,15 @@ namespace SSS_Client
 
                     if (_data.Length < 4)
                     {
-                        //disconnect
+                        instance.Disconnect();
                         return;
                     }
 
                     HandleData(_data);
                 }
-                catch (Exception _ex)
+                catch (Exception)
                 {
-                    Debug.Log(_ex);
+                    Disconnect();
                 }
             }
 
@@ -122,6 +129,14 @@ namespace SSS_Client
                         packetHandlers[_packetId](_packet);
                     }
                 });
+            }
+
+            private void Disconnect()
+            {
+                instance.Disconnect();
+
+                endPoint = null;
+                socket = null;
             }
         }
 
@@ -223,6 +238,7 @@ namespace SSS_Client
                     int _byteLength = stream.EndRead(_result);
                     if (_byteLength <= 0)
                     {
+                        instance.Disconnect();
                         return;
                     }
 
@@ -233,9 +249,19 @@ namespace SSS_Client
                 }
                 catch (Exception _ex)
                 {
-                    Console.WriteLine($"Error receiving TCP packet: {_ex}");
-                    throw;
+                    Disconnect();
+                    Debug.LogError(_ex);
                 }
+            }
+
+            private void Disconnect()
+            {
+                instance.Disconnect();
+
+                stream = null;
+                receivedData = null;
+                receivedBuffer = null;
+                socket = null;
             }
         }
         private void InitializeClientData()
@@ -243,9 +269,26 @@ namespace SSS_Client
             packetHandlers = new Dictionary<int, PacketHandler>()
                 {
                     { (int)ServerPackets.welcome, ClientHandler.Welcome },
-                    { (int)ServerPackets.spawnPlayer, ClientHandler.SpawnPlayer}
+                    { (int)ServerPackets.spawnPlayer, ClientHandler.SpawnPlayer},
+                    { (int)ServerPackets.playerPosition, ClientHandler.PlayerPosition },
+                    { (int)ServerPackets.playerRotation, ClientHandler.PlayerRotation },
+                    { (int)ServerPackets.playerDisconnected, ClientHandler.PlayerDisconnected },
+                    { (int)ServerPackets.playerHealth, ClientHandler.PlayerHealth },
+                    { (int)ServerPackets.playerRespawned, ClientHandler.PlayerRespawned }
                 };
             Debug.Log("Initialized packets.");
+        }
+
+        private void Disconnect()
+        {
+            if (isConnected)
+            {
+                isConnected = false;
+                tcp.socket.Close();
+                udp.socket.Close();
+
+                Debug.Log("Disconnected from server.");
+            }
         }
     }
 }
